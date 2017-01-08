@@ -31,8 +31,10 @@ def process(filename):
 
 def read_serial(ser):
     'Read the serial data and convert to a "int" value'
-    while ser.inWaiting:
+    if ser.inWaiting != 0:
         return int(ser.readline())
+    else:
+        return 0
 
 PORT = sys.argv[1]
 SERIAL = serial.Serial(PORT, 9600)
